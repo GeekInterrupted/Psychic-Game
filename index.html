@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Psychic Game</title>
+</head>
+
+<!-- Added a link to Bootstrap-->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+<body>
+	<div class="container">
+	<div class="jumbotron"> 
+
+	<h1 class="text-center">PSYCHIC GAME</h1>
+
+	<h2 class="text-center">Guess what letter I'm thinking off</h2>
+
+	<h2 class="text-center">Choose a letter a - z<span id="user-text"><strong> </strong></span></h2>
+		
+	<h2 class="text-center"><span id="gameStats"></span></h2>
+
+	<h2 class="text-center"><div id="mydiv">Letters you have chosen: </div></h2>
+	
+	
+	</div> <!--end of jumbotron div-->
+
+
+
+	<!--script to capture user guess-->
+
+	<script type = "text/javascript">
+
+	var randomLetter=String.fromCharCode(97 + Math.floor(Math.random() * 26)); 
+	var wins = 0;
+	var losses = 0;
+	var guessesLeft = 5;
+	
+	
+
+
+	console.log(randomLetter);
+
+
+
+	var userText = document.getElementById("user-text");
+
+	document.onkeyup = function(event) {
+
+		var userInput = String.fromCharCode(event.keyCode).toLowerCase();
+
+		if (userInput === randomLetter) {
+			wins++;
+			console.log(wins);
+		} else {
+			losses++;
+		}
+
+
+		
+	
+
+		// <!--user guesses list-->
+
+		var cumulativeUserGuesses = userInput;
+		document.getElementById('mydiv').insertAdjacentHTML('beforeend', cumulativeUserGuesses);
+
+
+
+
+
+		
+
+
+
+
+
+
+	var html = "<h2>Guess the letter</h2>" +
+	"<h2>Computer chose: " + randomLetter + "</h2>" +
+	"<h2>Your current pick: " + userInput + "</h2>" +
+	"<h2>Wins: " + wins + "<h2>" +
+	"<h2>Losses: " + losses + "<h2>";
+		
+	document.getElementById("gameStats").innerHTML = html;
+
+	
+
+};
+
+
+
+
+	</script>
+
+
+
+
+	
+	</div> <!--end of container div-->
+</body>
+</html>
